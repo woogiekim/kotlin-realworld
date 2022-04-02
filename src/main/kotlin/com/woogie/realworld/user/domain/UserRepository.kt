@@ -1,4 +1,4 @@
-package com.woogie.realworld.domain.user
+package com.woogie.realworld.user.domain
 
 import org.springframework.data.jpa.repository.JpaRepository
 

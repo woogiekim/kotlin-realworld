@@ -1,4 +1,4 @@
-package com.woogie.realworld.domain.user
+package com.woogie.realworld.user.domain
 
 import com.woogie.realworld.exception.ErrorCode.INVALID_EMAIL
 import com.woogie.realworld.exception.validate
