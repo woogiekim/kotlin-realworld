@@ -15,5 +15,6 @@ class User(
     /* 비밀번호 */
     val password: UserPassword,
 
+    /* 등록 일시 */
     val createAt: OffsetDateTime = OffsetDateTime.now()
 ) : BaseAggregateRoot<User>()
