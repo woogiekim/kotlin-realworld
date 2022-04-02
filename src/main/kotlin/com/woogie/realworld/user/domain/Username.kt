@@ -5,6 +5,10 @@ import javax.persistence.Embeddable
 
 @Embeddable
 data class Username(
-    @Column(name = "username", length = 100)
-    val value: String
-)
+    @Column(length = 100)
+    val username: String
+) {
+    override fun toString(): String {
+        return username
+    }
+}

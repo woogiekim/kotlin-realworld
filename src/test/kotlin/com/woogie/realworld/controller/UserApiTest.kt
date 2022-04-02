@@ -23,7 +23,7 @@ internal class UserApiTest @Autowired constructor(
         val req = UserRegisterRequest(createUsername(), createUserEmail(), createUserPassword())
 
         mockMvc.perform(
-            post("/users/register")
+            post("/users")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jacksonObjectMapper().writeValueAsString(req))
         ).andExpectAll(

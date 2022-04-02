@@ -14,7 +14,7 @@ class UserApi(
     private val userRegister: UserRegisterUseCase
 ) {
 
-    @PostMapping("/register")
+    @PostMapping()
     fun register(@RequestBody req: UserRegisterRequest): UserRegisterResponse {
         val user = userRegister.register(req.toEntity())
 

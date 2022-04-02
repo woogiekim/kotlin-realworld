@@ -24,9 +24,9 @@ class UserRegisterResponse(
 class UserResponse(
     user: User
 ) {
-    val email: String = user.email.value
+    val email: String = user.email.toString()
     val token: String? = null
-    val username: String = user.name.value
+    val username: String = user.name.toString()
     val bio: String? = null
     val image: String? = null
 }
