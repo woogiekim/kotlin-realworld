@@ -7,11 +7,15 @@ import javax.persistence.Embeddable
 
 @Embeddable
 data class UserPassword(
-    @Column(name = "password", length = 100)
-    val value: String
+    @Column(length = 100)
+    val password: String
 ) {
     init {
-        validate(value.length >= MINIMUM_LENGTH) { INVALID_USER_PASSWORD_LENGTH }
+        validate(password.length >= MINIMUM_LENGTH) { INVALID_USER_PASSWORD_LENGTH }
+    }
+
+    override fun toString(): String {
+        return password
     }
 
     companion object {
