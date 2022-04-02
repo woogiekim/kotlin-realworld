@@ -7,11 +7,11 @@ import javax.persistence.Embeddable
 
 @Embeddable
 data class UserEmail(
-    @Column(unique = true)
-    val email: String
+    @Column(name = "email", length = 100, unique = true)
+    val value: String
 ) {
     init {
-        validate(email.matches(Regex(EMAIL_REGEX))) { INVALID_EMAIL }
+        validate(value.matches(Regex(EMAIL_REGEX))) { INVALID_EMAIL }
     }
 
     companion object {
