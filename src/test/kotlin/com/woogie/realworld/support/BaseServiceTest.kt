@@ -1,4 +1,4 @@
-package com.woogie.realworld.service
+package com.woogie.realworld.support
 
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE

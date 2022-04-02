@@ -1,9 +1,9 @@
 package com.woogie.realworld.fixture
 
-import com.woogie.realworld.domain.user.User
-import com.woogie.realworld.domain.user.UserEmail
-import com.woogie.realworld.domain.user.UserPassword
-import com.woogie.realworld.domain.user.Username
+import com.woogie.realworld.user.domain.User
+import com.woogie.realworld.user.domain.UserEmail
+import com.woogie.realworld.user.domain.UserPassword
+import com.woogie.realworld.user.domain.Username
 
 fun createUser(
     email: UserEmail = createUserEmail(),

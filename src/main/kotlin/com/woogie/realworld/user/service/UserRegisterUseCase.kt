@@ -1,19 +1,19 @@
-package com.woogie.realworld.service
+package com.woogie.realworld.user.service
 
-import com.woogie.realworld.domain.user.User
-import com.woogie.realworld.domain.user.UserRepository
+import com.woogie.realworld.user.domain.User
+import com.woogie.realworld.user.domain.UserRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
-interface UserService {
+interface UserRegisterUseCase {
     fun register(user: User): User
 }
 
 @Service
 @Transactional
-class DefaultUserService(
+class DefaultUserRegister(
     private val userRepository: UserRepository
-) : UserService {
+) : UserRegisterUseCase {
     override fun register(user: User): User {
         return userRepository.save(user)
     }

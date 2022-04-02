@@ -1,0 +1,2 @@
+CREATE SCHEMA IF NOT EXISTS realworld;
+CREATE SCHEMA IF NOT EXISTS realworldtest;
