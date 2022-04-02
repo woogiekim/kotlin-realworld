@@ -5,6 +5,6 @@ import javax.persistence.Embeddable
 
 @Embeddable
 data class Username(
-    @Column
-    val name: String
+    @Column(name = "username", length = 100)
+    val value: String
 )

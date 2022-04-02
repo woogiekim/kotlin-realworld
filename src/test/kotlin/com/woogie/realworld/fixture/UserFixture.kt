@@ -6,11 +6,11 @@ import com.woogie.realworld.user.domain.UserPassword
 import com.woogie.realworld.user.domain.Username
 
 fun createUser(
-    email: UserEmail = createUserEmail(),
     name: Username = createUsername(),
+    email: UserEmail = createUserEmail(),
     password: UserPassword = createUserPassword(),
 ): User {
-    return User(email, name, password)
+    return User(name, email, password)
 }
 
 fun createUserEmail(
