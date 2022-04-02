@@ -43,11 +43,14 @@ configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
+
+        freeCompilerArgs = listOf("-Xjsr305=strict", "-Xjvm-default=all")
         jvmTarget = "11"
     }
 }
 
 tasks.withType<Test> {
     useJUnitPlatform()
+    dependsOn(tasks.ktlintCheck)
+    reports.html.required.set(true)
 }
