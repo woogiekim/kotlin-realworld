@@ -13,7 +13,7 @@ internal class UserRepositoryTest @Autowired constructor(
     private val entityManager: EntityManager
 ) : BaseRepositoryTest() {
     @Test
-    fun `사용자 생성 성공`() {
+    fun `User 생성 성공`() {
         var user = createUser()
 
         user = userRepository.save(user)

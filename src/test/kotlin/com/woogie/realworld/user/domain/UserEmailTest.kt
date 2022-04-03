@@ -7,10 +7,24 @@ import org.junit.jupiter.api.Test
 
 internal class UserEmailTest {
     @Test
-    fun `사용자 이메일 생성 성공`() {
+    fun `UserEmail 생성 성공`() {
         val email = UserEmail("wook@gmail.com")
 
         assertThat(email).isEqualTo(UserEmail("wook@gmail.com"))
+    }
+
+    @Test
+    fun `공백이 있으면 생성 실패`() {
+        assertThatExceptionOfType(RealWorldException::class.java)
+            .isThrownBy { UserEmail(" ") }
+    }
+
+    @Test
+    fun `최대길이 보다 크면 생성 실패`() {
+        val email = (0 until UserEmail.MAXIMUM_LENGTH + 1).joinToString("")
+
+        assertThatExceptionOfType(RealWorldException::class.java)
+            .isThrownBy { UserEmail(email) }
     }
 
     @Test
