@@ -11,4 +11,10 @@ data class UserBio(
     override fun toString(): String {
         return bio
     }
+
+    companion object {
+        fun createOrNull(bio: String?): UserBio? {
+            return bio?.let { UserBio(bio) }
+        }
+    }
 }

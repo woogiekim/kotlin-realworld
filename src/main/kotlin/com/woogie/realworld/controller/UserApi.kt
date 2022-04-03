@@ -45,7 +45,7 @@ class UserApi(
         val user = with(req.user) {
             userUpdateUseCase.update(id,
                 Username(username), UserEmail(email), UserPassword(password),
-                image?.let { UserImage(it) }, bio?.let { UserBio(it) }
+                UserImage.createOrNull(image), UserBio.createOrNull(bio)
             )
         }
 
