@@ -10,7 +10,7 @@ class UserRegistrationRequest(
 ) {
     fun toEntity(): User {
         return with(user) {
-            User(Username(username), UserEmail(email), UserPassword(password))
+            User.create(UserEmail(email), UserPassword(password), Username(username))
         }
     }
 }

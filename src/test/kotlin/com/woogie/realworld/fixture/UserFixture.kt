@@ -7,13 +7,7 @@ fun createUser(
     email: UserEmail = createUserEmail(),
     password: UserPassword = createUserPassword(),
 ): User {
-    return User(name, email, password)
-}
-
-fun createUsername(
-    name: String = "김태욱"
-): Username {
-    return Username(name)
+    return User.create(email, password, name)
 }
 
 fun createUserEmail(
@@ -28,14 +22,28 @@ fun createUserPassword(
     return UserPassword(password)
 }
 
-fun createUserImage(
-    image: String = "image.png"
-): UserImage {
-    return UserImage(image)
+fun createProfile(
+    username: Username = createUsername(),
+    bio: UserBio = createUserBio(),
+    image: UserImage = createUserImage()
+): Profile {
+    return Profile(username, bio, image)
+}
+
+fun createUsername(
+    name: String = "김태욱"
+): Username {
+    return Username(name)
 }
 
 fun createUserBio(
     bio: String = "행복"
 ): UserBio {
     return UserBio(bio)
+}
+
+fun createUserImage(
+    image: String = "image.png"
+): UserImage {
+    return UserImage(image)
 }

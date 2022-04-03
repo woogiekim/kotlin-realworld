@@ -20,7 +20,7 @@ internal class UserUpdateCommandTest @Autowired constructor(
     fun `사용자 수정 성공`() {
         val user = userRegistrationUseCase.register(createUser())
 
-        assertThat(user.name).isEqualTo(createUsername())
+        assertThat(user.username).isEqualTo(createUsername())
         assertThat(user.email).isEqualTo(createUserEmail())
         assertThat(user.password).isEqualTo(createUserPassword())
         assertThat(user.image).isNull()
@@ -33,7 +33,7 @@ internal class UserUpdateCommandTest @Autowired constructor(
 
         val foundUser = userRepository.findByIdOrThrow(user.id!!)
 
-        assertThat(foundUser.name).isEqualTo(Username("Taewook Kim"))
+        assertThat(foundUser.username).isEqualTo(Username("Taewook Kim"))
         assertThat(foundUser.email).isEqualTo(UserEmail("mdir2@naver.com"))
         assertThat(foundUser.password).isEqualTo(UserPassword("7654321"))
         assertThat(foundUser.image).isEqualTo(UserImage("changed.png"))
