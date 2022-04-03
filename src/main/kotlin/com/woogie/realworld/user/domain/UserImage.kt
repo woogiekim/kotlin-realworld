@@ -20,5 +20,9 @@ data class UserImage(
 
     companion object {
         const val MAXIMUM_LENGTH = 300
+
+        fun createOrNull(image: String?): UserImage? {
+            return image?.let { UserImage(it) }
+        }
     }
 }
