@@ -13,16 +13,16 @@ fun createUser(
     return User(name, email, password)
 }
 
-fun createUserEmail(
-    email: String = "wook@gmail.com"
-): UserEmail {
-    return UserEmail(email)
-}
-
 fun createUsername(
     name: String = "김태욱"
 ): Username {
     return Username(name)
+}
+
+fun createUserEmail(
+    email: String = "wook@gmail.com"
+): UserEmail {
+    return UserEmail(email)
 }
 
 fun createUserPassword(
