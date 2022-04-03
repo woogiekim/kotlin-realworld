@@ -24,7 +24,7 @@ class User(
     /* 등록 일시 */
     val createAt: OffsetDateTime = OffsetDateTime.now()
 ) : BaseAggregateRoot<User>() {
-    fun update(name: Username, email: UserEmail, password: UserPassword, image: UserImage, bio: UserBio) {
+    fun update(name: Username, email: UserEmail, password: UserPassword, image: UserImage?, bio: UserBio?) {
         this.name = name
         this.email = email
         this.password = password

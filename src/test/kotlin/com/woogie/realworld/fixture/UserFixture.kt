@@ -1,9 +1,6 @@
 package com.woogie.realworld.fixture
 
-import com.woogie.realworld.user.domain.User
-import com.woogie.realworld.user.domain.UserEmail
-import com.woogie.realworld.user.domain.UserPassword
-import com.woogie.realworld.user.domain.Username
+import com.woogie.realworld.user.domain.*
 
 fun createUser(
     name: Username = createUsername(),
@@ -29,4 +26,16 @@ fun createUserPassword(
     password: String = "1234567"
 ): UserPassword {
     return UserPassword(password)
+}
+
+fun createUserImage(
+    image: String = "image.png"
+): UserImage {
+    return UserImage(image)
+}
+
+fun createUserBio(
+    bio: String = "행복"
+): UserBio {
+    return UserBio(bio)
 }
