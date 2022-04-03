@@ -7,7 +7,7 @@ class UserResponse(
     val token: String? = null
 ) {
     val email: String = user.email.toString()
-    val username: String = user.name.toString()
+    val username: String = user.username.toString()
     val bio: String? = user.bio?.toString()
     val image: String? = user.image?.toString()
 }

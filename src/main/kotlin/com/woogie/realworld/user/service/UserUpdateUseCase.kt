@@ -24,7 +24,7 @@ class UserUpdateCommand(
     ): User {
         val user = userRepository.findByIdOrThrow(id)
 
-        user.update(name, email, password, image, bio)
+        user.update(email, password, name, bio, image)
 
         return user
     }

@@ -2,33 +2,49 @@ package com.woogie.realworld.user.domain
 
 import com.woogie.realworld.support.BaseAggregateRoot
 import java.time.OffsetDateTime
+import javax.persistence.CascadeType.ALL
 import javax.persistence.Entity
+import javax.persistence.FetchType.LAZY
+import javax.persistence.OneToOne
 
 @Entity
 class User(
-    /* 이름 */
-    var name: Username,
-
-    /* 이메일 */
+    /** 이메일 **/
     var email: UserEmail,
 
-    /* 비밀번호 */
+    /** 비밀번호 **/
     var password: UserPassword,
 
-    /* 이미지 */
-    var image: UserImage? = null,
+    /** 사용자 프로필 **/
+    @OneToOne(cascade = [ALL], fetch = LAZY)
+    val profile: Profile,
 
-    /* 바이오 */
-    var bio: UserBio? = null,
-
-    /* 등록 일시 */
+    /** 등록 일시 **/
     val createAt: OffsetDateTime = OffsetDateTime.now()
 ) : BaseAggregateRoot<User>() {
-    fun update(name: Username, email: UserEmail, password: UserPassword, image: UserImage?, bio: UserBio?) {
-        this.name = name
+    val username: Username
+        get() = this.profile.username
+
+    val bio: UserBio?
+        get() = this.profile.bio
+
+    val image: UserImage?
+        get() = this.profile.image
+
+    fun update(email: UserEmail, password: UserPassword, username: Username, bio: UserBio?, image: UserImage?) {
         this.email = email
         this.password = password
-        this.image = image
-        this.bio = bio
+
+        this.profile.update(username, bio, image)
+    }
+
+    companion object {
+        fun create(
+            email: UserEmail, password: UserPassword, username: Username, bio: UserBio? = null, image: UserImage? = null
+        ): User {
+            val profile = Profile(username, bio, image)
+
+            return User(email, password, profile)
+        }
     }
 }
