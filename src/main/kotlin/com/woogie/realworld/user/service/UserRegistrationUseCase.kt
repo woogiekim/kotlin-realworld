@@ -5,15 +5,18 @@ import com.woogie.realworld.user.domain.UserRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
-interface UserRegisterUseCase {
+interface UserRegistrationUseCase {
+    /**
+     * 사용자 등록
+     */
     fun register(user: User): User
 }
 
 @Service
 @Transactional
-class DefaultUserRegister(
+class UserRegistrationCommand(
     private val userRepository: UserRepository
-) : UserRegisterUseCase {
+) : UserRegistrationUseCase {
     override fun register(user: User): User {
         return userRepository.save(user)
     }

@@ -8,14 +8,14 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 
-internal class DefaultUserServiceTest @Autowired constructor(
-    private val userRegister: UserRegisterUseCase,
+internal class UserRegistrationCommandTest @Autowired constructor(
+    private val userRegistrationCommand: UserRegistrationCommand,
     private val userRepository: UserRepository
 ) : BaseServiceTest() {
 
     @Test
-    internal fun `사용자 생성 성공`() {
-        val user = userRegister.register(createUser())
+    fun `사용자 생성 성공`() {
+        val user = userRegistrationCommand.register(createUser())
 
         val foundUser = userRepository.findByIdOrThrow(user.id)
 
