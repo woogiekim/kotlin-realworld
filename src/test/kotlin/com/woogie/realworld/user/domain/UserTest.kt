@@ -28,11 +28,8 @@ internal class UserTest {
         assertThat(user.password).isEqualTo(UserPassword("1234567"))
 
         user.update(
-            Username("Taewook Kim"),
-            UserEmail("mdir2@naver.com"),
-            UserPassword("7654321"),
-            UserImage("image.png"),
-            UserBio("행복")
+            Username("Taewook Kim"), UserEmail("mdir2@naver.com"), UserPassword("7654321"),
+            UserImage("image.png"), UserBio("행복")
         )
 
         assertThat(user.name).isEqualTo(Username("Taewook Kim"))
