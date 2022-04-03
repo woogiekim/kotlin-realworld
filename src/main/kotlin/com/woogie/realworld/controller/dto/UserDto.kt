@@ -21,6 +21,12 @@ class UserRegisterResponse(
     val user: UserResponse = UserResponse(user)
 }
 
+class CurrentUserResponse(
+    user: User
+) {
+    val user: UserResponse = UserResponse(user)
+}
+
 class UserResponse(
     user: User
 ) {
