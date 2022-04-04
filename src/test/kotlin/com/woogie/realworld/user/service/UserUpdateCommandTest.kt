@@ -5,11 +5,11 @@ import com.woogie.realworld.fixture.createUserEmail
 import com.woogie.realworld.fixture.createUserPassword
 import com.woogie.realworld.fixture.createUsername
 import com.woogie.realworld.support.BaseServiceTest
-import com.woogie.realworld.support.findByIdOrThrow
 import com.woogie.realworld.user.domain.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.repository.findByIdOrNull
 
 internal class UserUpdateCommandTest @Autowired constructor(
     private val userUpdateUseCase: UserUpdateUseCase,
@@ -31,7 +31,7 @@ internal class UserUpdateCommandTest @Autowired constructor(
             UserPassword("7654321"), UserImage("changed.png"), UserBio("복행")
         )
 
-        val foundUser = userRepository.findByIdOrThrow(user.id!!)
+        val foundUser = userRepository.findByIdOrNull(user.id)!!
 
         assertThat(foundUser.username).isEqualTo(Username("Taewook Kim"))
         assertThat(foundUser.email).isEqualTo(UserEmail("mdir2@naver.com"))
