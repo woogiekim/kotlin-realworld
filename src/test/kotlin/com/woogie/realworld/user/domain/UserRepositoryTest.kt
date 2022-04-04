@@ -2,10 +2,10 @@ package com.woogie.realworld.user.domain
 
 import com.woogie.realworld.fixture.createUser
 import com.woogie.realworld.support.BaseRepositoryTest
-import com.woogie.realworld.support.findByIdOrThrow
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.repository.findByIdOrNull
 import javax.persistence.EntityManager
 
 internal class UserRepositoryTest @Autowired constructor(
@@ -22,7 +22,7 @@ internal class UserRepositoryTest @Autowired constructor(
 
         entityManager.clear()
 
-        val foundUser = userRepository.findByIdOrThrow(user.id)
+        val foundUser = userRepository.findByIdOrNull(user.id)!!
 
         assertThat(foundUser.email).isEqualTo(user.email)
         assertThat(foundUser.username).isEqualTo(user.username)

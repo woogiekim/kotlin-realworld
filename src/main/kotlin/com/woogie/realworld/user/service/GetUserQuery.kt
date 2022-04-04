@@ -1,8 +1,8 @@
 package com.woogie.realworld.user.service
 
-import com.woogie.realworld.support.findByIdOrThrow
 import com.woogie.realworld.user.domain.User
 import com.woogie.realworld.user.domain.UserRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -19,6 +19,6 @@ class GetUserService(
     private val userRepository: UserRepository
 ) : GetUserQuery {
     override fun getUser(id: Long): User {
-        return userRepository.findByIdOrThrow(id)
+        return userRepository.findByIdOrNull(id)!!
     }
 }

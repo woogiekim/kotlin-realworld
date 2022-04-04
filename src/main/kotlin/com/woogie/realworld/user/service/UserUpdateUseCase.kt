@@ -1,7 +1,7 @@
 package com.woogie.realworld.user.service
 
-import com.woogie.realworld.support.findByIdOrThrow
 import com.woogie.realworld.user.domain.*
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -22,7 +22,7 @@ class UserUpdateCommand(
     override fun update(
         id: Long, name: Username, email: UserEmail, password: UserPassword, image: UserImage?, bio: UserBio?
     ): User {
-        val user = userRepository.findByIdOrThrow(id)
+        val user = userRepository.findByIdOrNull(id)!!
 
         user.update(email, password, name, bio, image)
 
