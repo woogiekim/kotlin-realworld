@@ -1,7 +1,5 @@
 package com.woogie.realworld.domain.user.service
 
-import com.woogie.realworld.domain.user.service.GetUserQuery
-import com.woogie.realworld.domain.user.service.UserRegistrationUseCase
 import com.woogie.realworld.fixture.createUser
 import com.woogie.realworld.support.BaseServiceTest
 import org.assertj.core.api.Assertions.assertThat
