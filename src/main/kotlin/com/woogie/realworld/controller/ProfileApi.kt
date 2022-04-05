@@ -1,7 +1,7 @@
 package com.woogie.realworld.controller
 
 import com.woogie.realworld.controller.dto.GetProfileResponse
-import com.woogie.realworld.user.service.GetProfileQuery
+import com.woogie.realworld.domain.user.service.GetProfileQuery
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping

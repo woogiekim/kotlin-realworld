@@ -1,6 +1,6 @@
 package com.woogie.realworld.fixture
 
-import com.woogie.realworld.user.domain.*
+import com.woogie.realworld.domain.user.domain.*
 
 fun createUser(
     name: Username = createUsername(),

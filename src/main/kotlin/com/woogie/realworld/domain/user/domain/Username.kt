@@ -1,4 +1,4 @@
-package com.woogie.realworld.user.domain
+package com.woogie.realworld.domain.user.domain
 
 import com.woogie.realworld.exception.ErrorCode.INVALID_USERNAME_MAXIMUM_LENGTH
 import com.woogie.realworld.exception.ErrorCode.REQUIRED

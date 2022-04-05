@@ -1,6 +1,6 @@
 package com.woogie.realworld.controller.dto
 
-import com.woogie.realworld.user.domain.Profile
+import com.woogie.realworld.domain.user.domain.Profile
 
 class GetProfileResponse(
     profile: Profile

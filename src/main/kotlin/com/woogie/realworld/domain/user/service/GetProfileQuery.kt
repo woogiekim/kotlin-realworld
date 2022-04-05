@@ -1,7 +1,7 @@
-package com.woogie.realworld.user.service
+package com.woogie.realworld.domain.user.service
 
-import com.woogie.realworld.user.domain.Profile
-import com.woogie.realworld.user.domain.UserRepository
+import com.woogie.realworld.domain.user.domain.Profile
+import com.woogie.realworld.domain.user.domain.UserRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
