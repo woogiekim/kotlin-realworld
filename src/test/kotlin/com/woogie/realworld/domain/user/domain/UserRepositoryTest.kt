@@ -1,4 +1,4 @@
-package com.woogie.realworld.user.domain
+package com.woogie.realworld.domain.user.domain
 
 import com.woogie.realworld.fixture.createUser
 import com.woogie.realworld.support.BaseRepositoryTest

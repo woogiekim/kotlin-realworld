@@ -1,6 +1,6 @@
 package com.woogie.realworld.controller.dto
 
-import com.woogie.realworld.user.domain.*
+import com.woogie.realworld.domain.user.domain.User
 
 class UserUpdateRequest(
     val user: UserUpdateData

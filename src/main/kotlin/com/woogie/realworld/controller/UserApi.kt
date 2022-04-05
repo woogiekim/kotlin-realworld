@@ -1,10 +1,10 @@
 package com.woogie.realworld.controller
 
 import com.woogie.realworld.controller.dto.*
-import com.woogie.realworld.user.domain.*
-import com.woogie.realworld.user.service.GetUserQuery
-import com.woogie.realworld.user.service.UserRegistrationUseCase
-import com.woogie.realworld.user.service.UserUpdateUseCase
+import com.woogie.realworld.domain.user.domain.*
+import com.woogie.realworld.domain.user.service.GetUserQuery
+import com.woogie.realworld.domain.user.service.UserRegistrationUseCase
+import com.woogie.realworld.domain.user.service.UserUpdateUseCase
 import org.springframework.web.bind.annotation.*
 
 @RestController

@@ -1,4 +1,4 @@
-package com.woogie.realworld.user.domain
+package com.woogie.realworld.domain.user.domain
 
 import javax.persistence.Embeddable
 import javax.persistence.Lob

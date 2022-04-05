@@ -3,10 +3,10 @@
 package com.woogie.realworld.exception
 
 import com.woogie.realworld.exception.ErrorCode.REQUIRED
-import com.woogie.realworld.user.domain.UserEmail
-import com.woogie.realworld.user.domain.UserImage
-import com.woogie.realworld.user.domain.UserPassword
-import com.woogie.realworld.user.domain.Username
+import com.woogie.realworld.domain.user.domain.UserEmail
+import com.woogie.realworld.domain.user.domain.UserImage
+import com.woogie.realworld.domain.user.domain.UserPassword
+import com.woogie.realworld.domain.user.domain.Username
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 

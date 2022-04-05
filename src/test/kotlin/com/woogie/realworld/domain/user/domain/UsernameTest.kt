@@ -1,4 +1,4 @@
-package com.woogie.realworld.user.domain
+package com.woogie.realworld.domain.user.domain
 
 import com.woogie.realworld.exception.RealWorldException
 import org.assertj.core.api.Assertions

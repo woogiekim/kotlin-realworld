@@ -2,7 +2,7 @@ package com.woogie.realworld.controller
 
 import com.woogie.realworld.fixture.createUser
 import com.woogie.realworld.support.BaseApiTest
-import com.woogie.realworld.user.service.UserRegistrationUseCase
+import com.woogie.realworld.domain.user.service.UserRegistrationUseCase
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.web.servlet.MockMvc
