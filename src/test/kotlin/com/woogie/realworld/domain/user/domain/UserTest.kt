@@ -46,4 +46,33 @@ internal class UserTest {
         assertThat(user.bio).isEqualTo(updatedBio)
         assertThat(user.image).isEqualTo(updatedImage)
     }
+
+    @Test
+    fun `팔로우 성공`() {
+        val followee = createUser(Username("followee"), UserEmail("followee@naver.com")).apply { id = 1 }
+
+        val follower1 = createUser(Username("follower1"), UserEmail("follower1@naver.com")).apply { id = 2 }
+        val follower2 = createUser(Username("follower2"), UserEmail("follower2@naver.com")).apply { id = 3 }
+
+        followee.follow(follower1)
+        followee.follow(follower2)
+
+        assertThat(followee.followers).containsExactly(follower1, follower2)
+    }
+
+    @Test
+    fun `언팔로우 성공`() {
+        val followee = createUser(Username("followee"), UserEmail("followee@naver.com")).apply { id = 1 }
+
+        val follower = createUser(Username("follower"), UserEmail("follower@naver.com")).apply { id = 2 }
+        val unFollower = createUser(Username("unFollower"), UserEmail("unFollower@naver.com")).apply { id = 3 }
+
+        followee.follow(follower)
+        followee.follow(unFollower)
+
+        followee.unfollow(unFollower)
+
+        assertThat(followee.followers).containsExactly(follower)
+        assertThat(followee.followers).doesNotContain(unFollower)
+    }
 }
