@@ -5,6 +5,7 @@ import java.time.OffsetDateTime
 import javax.persistence.CascadeType.ALL
 import javax.persistence.Entity
 import javax.persistence.FetchType.LAZY
+import javax.persistence.ManyToMany
 import javax.persistence.OneToOne
 
 @Entity
@@ -18,6 +19,10 @@ class User(
     /** 사용자 프로필 **/
     @OneToOne(cascade = [ALL], fetch = LAZY)
     val profile: Profile,
+
+    /** 플로워 **/
+    @ManyToMany(cascade = [ALL], fetch = LAZY)
+    val followers: MutableList<User> = mutableListOf(),
 
     /** 등록 일시 **/
     val createAt: OffsetDateTime = OffsetDateTime.now()
@@ -36,6 +41,14 @@ class User(
         this.password = password
 
         this.profile.update(username, bio, image)
+    }
+
+    fun follow(follower: User) {
+        this.followers.add(follower)
+    }
+
+    fun unfollow(follower: User) {
+        this.followers.remove(follower)
     }
 
     companion object {

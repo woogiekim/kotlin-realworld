@@ -5,10 +5,9 @@ import com.woogie.realworld.controller.dto.UserRegistrationData
 import com.woogie.realworld.controller.dto.UserRegistrationRequest
 import com.woogie.realworld.controller.dto.UserUpdateData
 import com.woogie.realworld.controller.dto.UserUpdateRequest
+import com.woogie.realworld.domain.user.service.UserRegistrationUseCase
 import com.woogie.realworld.fixture.createUser
 import com.woogie.realworld.support.BaseApiTest
-import com.woogie.realworld.user.domain.*
-import com.woogie.realworld.domain.user.service.UserRegistrationUseCase
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
