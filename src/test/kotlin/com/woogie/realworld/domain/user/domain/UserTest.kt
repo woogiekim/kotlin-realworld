@@ -2,6 +2,7 @@ package com.woogie.realworld.domain.user.domain
 
 import com.woogie.realworld.fixture.createUser
 import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import org.junit.jupiter.api.Test
 
 internal class UserTest {
@@ -61,6 +62,15 @@ internal class UserTest {
     }
 
     @Test
+    fun `본인을 팔로우 하려고 하면 실패`() {
+        val followee = createUser(Username("followee"), UserEmail("followee@naver.com")).apply { id = 1 }
+
+        assertThatIllegalArgumentException().isThrownBy {
+            followee.follow(followee)
+        }
+    }
+
+    @Test
     fun `언팔로우 성공`() {
         val followee = createUser(Username("followee"), UserEmail("followee@naver.com")).apply { id = 1 }
 
@@ -74,5 +84,14 @@ internal class UserTest {
 
         assertThat(followee.followers).containsExactly(follower)
         assertThat(followee.followers).doesNotContain(unFollower)
+    }
+
+    @Test
+    fun `본인을 언팔로우 하려고 하면 실패`() {
+        val followee = createUser(Username("followee"), UserEmail("followee@naver.com")).apply { id = 1 }
+
+        assertThatIllegalArgumentException().isThrownBy {
+            followee.unfollow(followee)
+        }
     }
 }
