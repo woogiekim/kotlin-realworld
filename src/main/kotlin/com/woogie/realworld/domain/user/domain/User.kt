@@ -20,7 +20,7 @@ class User(
     @OneToOne(cascade = [ALL], fetch = LAZY)
     val profile: Profile,
 
-    /** 플로워 **/
+    /** 팔로워 **/
     @ManyToMany(cascade = [ALL], fetch = LAZY)
     val followers: MutableList<User> = mutableListOf(),
 
@@ -44,10 +44,14 @@ class User(
     }
 
     fun follow(follower: User) {
+        require(this != follower) { "본인을 팔로우 할 수 없음" }
+
         this.followers.add(follower)
     }
 
     fun unfollow(follower: User) {
+        require(this != follower) { "본인을 언팔로우 할 수 없음" }
+
         this.followers.remove(follower)
     }
 
