@@ -3,9 +3,10 @@ package com.woogie.realworld.controller.dto
 import com.woogie.realworld.domain.user.domain.Profile
 
 class GetProfileResponse(
-    profile: Profile
+    profile: Profile,
+    following: Boolean = false
 ) {
-    val profile = ProfileResponse(profile)
+    val profile = ProfileResponse(profile, following)
 }
 
 class ProfileResponse(

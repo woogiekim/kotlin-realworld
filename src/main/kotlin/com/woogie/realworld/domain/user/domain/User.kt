@@ -55,6 +55,10 @@ class User(
         this.followers.remove(follower)
     }
 
+    fun following(follower: User): Boolean {
+        return this.followers.contains(follower)
+    }
+
     companion object {
         fun create(
             email: UserEmail, password: UserPassword, username: Username, bio: UserBio? = null, image: UserImage? = null
