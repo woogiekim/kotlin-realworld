@@ -1,5 +1,7 @@
 package com.woogie.realworld.controller
 
+import com.woogie.realworld.domain.user.domain.UserEmail
+import com.woogie.realworld.domain.user.domain.Username
 import com.woogie.realworld.fixture.createUser
 import com.woogie.realworld.support.BaseApiTest
 import com.woogie.realworld.domain.user.service.UserRegistrationUseCase
@@ -16,10 +18,11 @@ internal class ProfileApiTest @Autowired constructor(
 
     @Test
     fun `프로필 조회`() {
+        val currentUser = userRegistrationUseCase.register(createUser(Username("currentUser"), UserEmail("currentUser@naver.com")))
         val user = userRegistrationUseCase.register(createUser())
 
         mockMvc.perform(
-            MockMvcRequestBuilders.get("/api/profile/{id}", user.id!!)
+            MockMvcRequestBuilders.get("/api/profile/{username}/{currentUserId}", user.username, currentUser.id!!)
         ).andExpectAll(
             MockMvcResultMatchers.status().isOk,
             MockMvcResultMatchers.jsonPath("$.profile.username").value("김태욱"),

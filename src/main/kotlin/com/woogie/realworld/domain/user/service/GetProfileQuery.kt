@@ -2,6 +2,7 @@ package com.woogie.realworld.domain.user.service
 
 import com.woogie.realworld.domain.user.domain.Profile
 import com.woogie.realworld.domain.user.domain.UserRepository
+import com.woogie.realworld.domain.user.domain.Username
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -10,7 +11,7 @@ interface GetProfileQuery {
     /**
      * 사용자 프로필 조회
      */
-    fun getProfile(id: Long): Profile
+    fun getProfile(username: Username, currentUserId: Long?): Pair<Profile, Boolean>
 }
 
 @Service
@@ -18,9 +19,12 @@ interface GetProfileQuery {
 class GetProfileService(
     private val userRepository: UserRepository
 ) : GetProfileQuery {
-    override fun getProfile(id: Long): Profile {
-        val user = userRepository.findByIdOrNull(id)!!
+    override fun getProfile(username: Username, currentUserId: Long?): Pair<Profile, Boolean> {
+        val user = userRepository.findByUsername(username)!!
 
-        return user.profile
+        val currentUser = userRepository.findByIdOrNull(currentUserId)
+        val following = currentUser?.let { user.following(it) } ?: false
+
+        return Pair(user.profile, following)
     }
 }
