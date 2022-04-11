@@ -1,5 +1,6 @@
 package com.woogie.realworld.domain.user.domain
 
+import com.woogie.realworld.domain.user.service.PasswordGenerator
 import com.woogie.realworld.support.BaseAggregateRoot
 import java.time.OffsetDateTime
 import javax.persistence.CascadeType.ALL
@@ -57,6 +58,10 @@ class User(
 
     fun following(follower: User): Boolean {
         return this.followers.contains(follower)
+    }
+
+    fun encodePassword(generator: PasswordGenerator) {
+        this.password = generator.generate(this.password)
     }
 
     companion object {

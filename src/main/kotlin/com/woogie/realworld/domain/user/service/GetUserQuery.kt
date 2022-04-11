@@ -1,6 +1,7 @@
 package com.woogie.realworld.domain.user.service
 
 import com.woogie.realworld.domain.user.domain.User
+import com.woogie.realworld.domain.user.domain.UserEmail
 import com.woogie.realworld.domain.user.domain.UserRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
@@ -11,6 +12,11 @@ interface GetUserQuery {
      * 사용자 조회
      */
     fun getUser(id: Long): User
+
+    /**
+     * 사용자 조회
+     */
+    fun getUser(email: UserEmail): User
 }
 
 @Service
@@ -20,5 +26,9 @@ class GetUserService(
 ) : GetUserQuery {
     override fun getUser(id: Long): User {
         return userRepository.findByIdOrNull(id)!!
+    }
+
+    override fun getUser(email: UserEmail): User {
+        return userRepository.findByEmail(email)!!
     }
 }

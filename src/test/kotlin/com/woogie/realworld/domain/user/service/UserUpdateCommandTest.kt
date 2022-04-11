@@ -14,6 +14,7 @@ import org.springframework.data.repository.findByIdOrNull
 internal class UserUpdateCommandTest @Autowired constructor(
     private val userUpdateUseCase: UserUpdateUseCase,
     private val userRegistrationUseCase: UserRegistrationUseCase,
+    private val passwordValidator: PasswordValidator,
     private val userRepository: UserRepository
 ) : BaseServiceTest() {
     @Test
@@ -22,7 +23,7 @@ internal class UserUpdateCommandTest @Autowired constructor(
 
         assertThat(user.username).isEqualTo(createUsername())
         assertThat(user.email).isEqualTo(createUserEmail())
-        assertThat(user.password).isEqualTo(createUserPassword())
+        assertThat(passwordValidator.validate(createUserPassword(), user)).isTrue
         assertThat(user.image).isNull()
         assertThat(user.bio).isNull()
 
@@ -35,7 +36,6 @@ internal class UserUpdateCommandTest @Autowired constructor(
 
         assertThat(foundUser.username).isEqualTo(Username("Taewook Kim"))
         assertThat(foundUser.email).isEqualTo(UserEmail("mdir2@naver.com"))
-        assertThat(foundUser.password).isEqualTo(UserPassword("7654321"))
         assertThat(foundUser.image).isEqualTo(UserImage("changed.png"))
         assertThat(foundUser.bio).isEqualTo(UserBio("복행"))
     }
