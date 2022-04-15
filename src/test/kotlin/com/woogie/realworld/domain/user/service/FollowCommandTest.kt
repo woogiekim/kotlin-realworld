@@ -10,9 +10,9 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.findByIdOrNull
 
-internal class UserFollowCommandTest @Autowired constructor(
-    private val userRepository: UserRepository,
-    private val userFollowUseCase: UserFollowUseCase
+internal class FollowCommandTest @Autowired constructor(
+    private val followUseCase: FollowUseCase,
+    private val userRepository: UserRepository
 ) : BaseServiceTest() {
     @Test
     fun `유저 팔로우 성공`() {
@@ -26,8 +26,8 @@ internal class UserFollowCommandTest @Autowired constructor(
         val unFollower =
             userRepository.save(createUser(createUsername("unFollower"), createUserEmail("unFollower@naver.com")))
 
-        userFollowUseCase.follow(followee.username, follower1.id!!)
-        userFollowUseCase.follow(followee.username, follower2.id!!)
+        followUseCase.follow(followee.username, follower1.id!!)
+        followUseCase.follow(followee.username, follower2.id!!)
 
         val foundFollowee = userRepository.findByIdOrNull(followee.id)!!
 

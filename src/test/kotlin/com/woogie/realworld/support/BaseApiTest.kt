@@ -1,7 +1,7 @@
 package com.woogie.realworld.support
 
 import com.woogie.realworld.domain.user.domain.*
-import com.woogie.realworld.domain.user.service.UserLoginCommand
+import com.woogie.realworld.domain.user.service.LoginCommand
 import com.woogie.realworld.domain.user.service.UserRegistrationUseCase
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -16,7 +16,7 @@ abstract class BaseApiTest {
     private lateinit var userRegistrationUseCase: UserRegistrationUseCase
 
     @Autowired
-    private lateinit var userLoginCommand: UserLoginCommand
+    private lateinit var userLoginCommand: LoginCommand
 
     protected fun prepareLogInUser(
         email: UserEmail = UserEmail("woogie@gmail.com"),
