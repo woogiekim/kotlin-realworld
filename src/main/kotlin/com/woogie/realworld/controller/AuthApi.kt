@@ -4,7 +4,7 @@ import com.woogie.realworld.controller.dto.LoginRequest
 import com.woogie.realworld.controller.dto.LoginResponse
 import com.woogie.realworld.controller.dto.UserRegistrationRequest
 import com.woogie.realworld.controller.dto.UserRegistrationResponse
-import com.woogie.realworld.domain.user.service.UserLoginUseCase
+import com.woogie.realworld.domain.user.service.LoginUseCase
 import com.woogie.realworld.domain.user.service.UserRegistrationUseCase
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/users")
 class AuthApi(
     private val userRegistrationUseCase: UserRegistrationUseCase,
-    private val userLoginUseCase: UserLoginUseCase
+    private val loginUseCase: LoginUseCase
 ) {
 
     /**
@@ -33,7 +33,7 @@ class AuthApi(
      */
     @PostMapping("/login")
     fun login(@RequestBody req: LoginRequest): LoginResponse {
-        val (user, token) = userLoginUseCase.login(req.email, req.password)
+        val (user, token) = loginUseCase.login(req.email, req.password)
 
         return LoginResponse(user, token)
     }

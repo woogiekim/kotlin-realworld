@@ -6,7 +6,7 @@ import com.woogie.realworld.domain.user.domain.UserPassword
 import com.woogie.realworld.domain.user.domain.UserRepository
 import org.springframework.stereotype.Service
 
-interface UserLoginUseCase {
+interface LoginUseCase {
     fun login(email: UserEmail, password: UserPassword): Pair<User, String>
 }
 
@@ -19,11 +19,11 @@ interface TokenGenerator {
 }
 
 @Service
-class UserLoginCommand(
+class LoginCommand(
     private val userRepository: UserRepository,
     private val passwordValidator: PasswordValidator,
     private val tokenGenerator: TokenGenerator
-) : UserLoginUseCase {
+) : LoginUseCase {
     override fun login(email: UserEmail, password: UserPassword): Pair<User, String> {
         val user = userRepository.findByEmail(email)!!
 

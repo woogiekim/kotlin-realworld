@@ -23,8 +23,8 @@ class UserApi(
      */
     @GetMapping
     fun getCurrent(
-        @RequestHeader(AUTHORIZATION) token: String,
-        @AuthenticationPrincipal securityUser: SecurityUser
+        @AuthenticationPrincipal securityUser: SecurityUser,
+        @RequestHeader(AUTHORIZATION) token: String
     ): CurrentUserResponse {
         val user = getUserQuery.getUser(securityUser.id!!)
 
