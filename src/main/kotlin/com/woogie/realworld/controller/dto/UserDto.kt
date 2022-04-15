@@ -13,7 +13,8 @@ class UserResponse(
 }
 
 class CurrentUserResponse(
-    user: User
+    user: User,
+    token: String? = null
 ) {
-    val user: UserResponse = UserResponse(user)
+    val user: UserResponse = UserResponse(user, token)
 }
