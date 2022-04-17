@@ -26,8 +26,8 @@ internal class FollowCommandTest @Autowired constructor(
         val unFollower =
             userRepository.save(createUser(createUsername("unFollower"), createUserEmail("unFollower@naver.com")))
 
-        followUseCase.follow(followee.username, follower1.id!!)
-        followUseCase.follow(followee.username, follower2.id!!)
+        followUseCase.followOrUnFollow(followee.username, follower1.id!!)
+        followUseCase.followOrUnFollow(followee.username, follower2.id!!)
 
         val foundFollowee = userRepository.findByIdOrNull(followee.id)!!
 

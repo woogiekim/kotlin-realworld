@@ -1,10 +1,7 @@
 package com.woogie.realworld.domain.user.service
 
 import com.woogie.realworld.domain.user.domain.*
-import com.woogie.realworld.fixture.createUser
-import com.woogie.realworld.fixture.createUserEmail
-import com.woogie.realworld.fixture.createUserPassword
-import com.woogie.realworld.fixture.createUsername
+import com.woogie.realworld.fixture.*
 import com.woogie.realworld.support.BaseServiceTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -24,8 +21,8 @@ internal class UserUpdateCommandTest @Autowired constructor(
         assertThat(user.username).isEqualTo(createUsername())
         assertThat(user.email).isEqualTo(createUserEmail())
         assertThat(passwordValidator.validate(createUserPassword(), user)).isTrue
-        assertThat(user.image).isNull()
-        assertThat(user.bio).isNull()
+        assertThat(user.image).isEqualTo(createUserImage())
+        assertThat(user.bio).isEqualTo(createUserBio())
 
         userUpdateUseCase.update(
             user.id!!, Username("Taewook Kim"), UserEmail("mdir2@naver.com"),

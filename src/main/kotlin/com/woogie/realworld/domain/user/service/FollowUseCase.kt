@@ -12,7 +12,7 @@ interface FollowUseCase {
      * 팔로우이가 팔로워를 등록
      * followee 가 follower를 등록하는 형태이고, followee, following(팔로우 유무) 를 리턴
      */
-    fun follow(followeeName: Username, followerId: Long): Pair<User, Boolean>
+    fun followOrUnFollow(followeeName: Username, followerId: Long): Pair<User, Boolean>
 }
 
 @Service
@@ -20,11 +20,11 @@ interface FollowUseCase {
 class FollowCommand(
     private val userRepository: UserRepository
 ) : FollowUseCase {
-    override fun follow(followeeName: Username, followerId: Long): Pair<User, Boolean> {
+    override fun followOrUnFollow(followeeName: Username, followerId: Long): Pair<User, Boolean> {
         val followee = userRepository.findByUsername(followeeName)!!
         val follower = userRepository.findByIdOrNull(followerId)!!
 
-        followee.follow(follower)
+        followee.followOrUnFollow(follower)
 
         return Pair(followee, followee.following(follower))
     }

@@ -6,8 +6,10 @@ fun createUser(
     name: Username = createUsername(),
     email: UserEmail = createUserEmail(),
     password: UserPassword = createUserPassword(),
+    bio: UserBio? = createUserBio(),
+    image: UserImage? = createUserImage()
 ): User {
-    return User.create(email, password, name)
+    return User.create(email, password, name, bio, image)
 }
 
 fun createUserEmail(

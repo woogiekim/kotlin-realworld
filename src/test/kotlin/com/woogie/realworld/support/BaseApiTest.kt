@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional
 @AutoConfigureMockMvc
 abstract class BaseApiTest {
     @Autowired
-    private lateinit var userRegistrationUseCase: UserRegistrationUseCase
+    protected lateinit var userRegistrationUseCase: UserRegistrationUseCase
 
     @Autowired
     private lateinit var userLoginCommand: LoginCommand
