@@ -5,7 +5,6 @@ import com.woogie.realworld.controller.dto.LoginData
 import com.woogie.realworld.controller.dto.LoginRequest
 import com.woogie.realworld.controller.dto.UserRegistrationData
 import com.woogie.realworld.controller.dto.UserRegistrationRequest
-import com.woogie.realworld.domain.user.service.UserRegistrationUseCase
 import com.woogie.realworld.fixture.createUser
 import com.woogie.realworld.support.BaseApiTest
 import org.junit.jupiter.api.Test
@@ -17,8 +16,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPat
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 internal class AuthApiTest @Autowired constructor(
-    private val userRegistrationUseCase: UserRegistrationUseCase,
-    private val mockMvc: MockMvc,
+    private val mockMvc: MockMvc
 ) : BaseApiTest() {
 
     @Test
@@ -56,8 +54,8 @@ internal class AuthApiTest @Autowired constructor(
             jsonPath("$.user.username").value(user.username.toString()),
             jsonPath("$.user.email").value(user.email.toString()),
             jsonPath("$.user.token").isNotEmpty,
-            jsonPath("$.user.bio").isEmpty,
-            jsonPath("$.user.image").isEmpty
+            jsonPath("$.user.bio").value(user.bio.toString()),
+            jsonPath("$.user.image").value(user.image.toString())
         )
     }
 }

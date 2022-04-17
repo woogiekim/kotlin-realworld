@@ -4,6 +4,7 @@ import com.woogie.realworld.controller.dto.GetProfileResponse
 import com.woogie.realworld.domain.user.domain.Username
 import com.woogie.realworld.domain.user.service.GetProfileQuery
 import com.woogie.realworld.domain.user.service.FollowUseCase
+import com.woogie.realworld.domain.user.service.UnFollowUseCase
 import com.woogie.realworld.security.SecurityUser
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.*
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/profile")
 class ProfileApi(
     private val getProfileQuery: GetProfileQuery,
-    private val followUseCase: FollowUseCase
+    private val followUseCase: FollowUseCase,
+    private val unFollowUseCase: UnFollowUseCase
 ) {
 
     @GetMapping("/{username}")
@@ -25,12 +27,12 @@ class ProfileApi(
         return GetProfileResponse(profile, following)
     }
 
-    @PostMapping("/{followerId}/follow")
+    @PostMapping("/{username}/follow")
     fun follow(
         @AuthenticationPrincipal securityUser: SecurityUser,
-        @PathVariable followerId: Long
+        @PathVariable username: String
     ): GetProfileResponse {
-        val (followee, following) = followUseCase.follow(Username(securityUser.username), followerId)
+        val (followee, following) = followUseCase.followOrUnFollow(Username(username), securityUser.id!!)
 
         return GetProfileResponse(followee.profile, following)
     }

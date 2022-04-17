@@ -44,6 +44,14 @@ class User(
         this.profile.update(username, bio, image)
     }
 
+    fun followOrUnFollow(follower: User) {
+        if (following(follower)) {
+            unfollow(follower)
+        } else {
+            follow(follower)
+        }
+    }
+
     fun follow(follower: User) {
         require(this != follower) { "본인을 팔로우 할 수 없음" }
 
