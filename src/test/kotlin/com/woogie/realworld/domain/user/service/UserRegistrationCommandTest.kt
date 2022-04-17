@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.findByIdOrNull
 
 internal class UserRegistrationCommandTest @Autowired constructor(
-    private val userRegistrationCommand: UserRegistrationCommand,
+    private val userRegistrationUseCase: UserRegistrationUseCase,
     private val userRepository: UserRepository
 ) : BaseServiceTest() {
 
     @Test
     fun `사용자 생성 성공`() {
-        val user = userRegistrationCommand.register(createUser())
+        val user = userRegistrationUseCase.register(createUser())
 
         val foundUser = userRepository.findByIdOrNull(user.id)!!
 
