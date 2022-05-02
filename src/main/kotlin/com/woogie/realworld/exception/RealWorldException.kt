@@ -2,6 +2,7 @@
 
 package com.woogie.realworld.exception
 
+import com.woogie.realworld.domain.article.ArticleTitle
 import com.woogie.realworld.exception.ErrorCode.REQUIRED
 import com.woogie.realworld.domain.user.domain.UserEmail
 import com.woogie.realworld.domain.user.domain.UserImage
@@ -29,7 +30,10 @@ enum class ErrorCode(
     INVALID_USER_PASSWORD_MAXIMUM_LENGTH("사용자 비밀번호 최대 길이 ${UserPassword.MAXIMUM_LENGTH} 보다 큽니다."),
 
     /** 사용자 이미지 **/
-    INVALID_USER_IMAGE_MAXIMUM_LENGTH("사용자 이미지 최대 길이 ${UserImage.MAXIMUM_LENGTH} 보다 큽니다.")
+    INVALID_USER_IMAGE_MAXIMUM_LENGTH("사용자 이미지 최대 길이 ${UserImage.MAXIMUM_LENGTH} 보다 큽니다."),
+
+    /** 아티클 제목 **/
+    INVALID_ARTICLE_MINIMUM_LENGTH("아티클 제목 최대 길이 ${ArticleTitle.MAXIMUM_LENGTH} 보다 큽니다.")
 }
 
 /**
