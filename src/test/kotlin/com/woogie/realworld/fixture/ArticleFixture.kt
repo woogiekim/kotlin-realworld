@@ -1,6 +1,6 @@
 package com.woogie.realworld.fixture
 
-import com.woogie.realworld.domain.article.*
+import com.woogie.realworld.domain.article.domain.*
 import com.woogie.realworld.domain.user.domain.User
 
 fun createArticle(

@@ -1,4 +1,4 @@
-package com.woogie.realworld.domain.article
+package com.woogie.realworld.domain.article.domain
 
 import com.woogie.realworld.domain.tag.Tag
 import com.woogie.realworld.domain.user.domain.User

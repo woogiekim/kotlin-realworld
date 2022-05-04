@@ -2,7 +2,7 @@
 
 package com.woogie.realworld.exception
 
-import com.woogie.realworld.domain.article.ArticleTitle
+import com.woogie.realworld.domain.article.domain.ArticleTitle
 import com.woogie.realworld.exception.ErrorCode.REQUIRED
 import com.woogie.realworld.domain.user.domain.UserEmail
 import com.woogie.realworld.domain.user.domain.UserImage

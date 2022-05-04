@@ -1,5 +1,6 @@
-package com.woogie.realworld.domain.article
+package com.woogie.realworld.domain.article.domain
 
+import com.woogie.realworld.domain.article.domain.ArticleBody
 import com.woogie.realworld.exception.ErrorCode.REQUIRED
 import com.woogie.realworld.support.assertThatRealWorldException
 import org.assertj.core.api.Assertions.assertThat
