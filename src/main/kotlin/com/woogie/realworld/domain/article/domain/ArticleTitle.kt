@@ -1,4 +1,4 @@
-package com.woogie.realworld.domain.article
+package com.woogie.realworld.domain.article.domain
 
 import com.woogie.realworld.exception.ErrorCode.INVALID_ARTICLE_MINIMUM_LENGTH
 import com.woogie.realworld.exception.ErrorCode.REQUIRED
@@ -12,8 +12,8 @@ data class ArticleTitle(
     val value: String
 ) {
     init {
-        validate(value.isNotBlank()) { REQUIRED }
-        validate(value.length <= MAXIMUM_LENGTH) { INVALID_ARTICLE_MINIMUM_LENGTH }
+        validate(this.value.isNotBlank()) { REQUIRED }
+        validate(this.value.length <= MAXIMUM_LENGTH) { INVALID_ARTICLE_MINIMUM_LENGTH }
     }
 
     companion object {

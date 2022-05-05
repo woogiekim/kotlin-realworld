@@ -2,8 +2,8 @@
 
 package com.woogie.realworld.exception
 
-import com.woogie.realworld.domain.article.ArticleTitle
-import com.woogie.realworld.exception.ErrorCode.REQUIRED
+import com.woogie.realworld.domain.article.domain.ArticleTitle
+import com.woogie.realworld.domain.tag.domain.Tag
 import com.woogie.realworld.domain.user.domain.UserEmail
 import com.woogie.realworld.domain.user.domain.UserImage
 import com.woogie.realworld.domain.user.domain.UserPassword
@@ -20,7 +20,7 @@ enum class ErrorCode(
 
     /** 이메일 **/
     INVALID_EMAIL("이메일 형식이 아닙니다."),
-    INVALID_EMAIL_MAXIMUM_LENGTH("사용자 이메일 최대 길이 ${UserEmail.MAXIMUM_LENGTH} 보다 큽니다.\""),
+    INVALID_EMAIL_MAXIMUM_LENGTH("사용자 이메일 최대 길이 ${UserEmail.MAXIMUM_LENGTH} 보다 큽니다."),
 
     /** 사용자 이름 **/
     INVALID_USERNAME_MAXIMUM_LENGTH("사용자 이름 최소 길이 ${Username.MAXIMUM_LENGTH} 보다 큽니다."),
@@ -33,7 +33,10 @@ enum class ErrorCode(
     INVALID_USER_IMAGE_MAXIMUM_LENGTH("사용자 이미지 최대 길이 ${UserImage.MAXIMUM_LENGTH} 보다 큽니다."),
 
     /** 아티클 제목 **/
-    INVALID_ARTICLE_MINIMUM_LENGTH("아티클 제목 최대 길이 ${ArticleTitle.MAXIMUM_LENGTH} 보다 큽니다.")
+    INVALID_ARTICLE_MINIMUM_LENGTH("아티클 제목 최대 길이 ${ArticleTitle.MAXIMUM_LENGTH} 보다 큽니다."),
+
+    /** 태그 **/
+    INVALID_TAG_MAXIMUM_LENGTH("태그 이름 최대 길이 ${Tag.MAXIMUM_LENGTH} 보다 큽니다.")
 }
 
 /**
@@ -47,21 +50,5 @@ fun validate(value: Boolean, lazyErrorCode: () -> ErrorCode) {
     if (!value) {
         val errorCode = lazyErrorCode()
         throw RealWorldException(errorCode)
-    }
-}
-
-/**
- * Throws an [RealWorldException] if the [value] is null. Otherwise returns the not null value.
- */
-@OptIn(ExperimentalContracts::class)
-fun <T> validateNotNull(value: T?): T {
-    contract {
-        returns() implies (value != null)
-    }
-
-    if (value == null) {
-        throw RealWorldException(REQUIRED)
-    } else {
-        return value
     }
 }

@@ -1,20 +1,18 @@
-package com.woogie.realworld.domain.tag
+package com.woogie.realworld.domain.article.domain
 
 import com.woogie.realworld.exception.ErrorCode.REQUIRED
 import com.woogie.realworld.exception.validate
 import javax.persistence.Column
 import javax.persistence.Embeddable
+import javax.persistence.Lob
 
 @Embeddable
-data class Tag(
-    @Column(name = "tag", length = MAX_LENGTH)
+data class ArticleBody(
+    @Lob
+    @Column(name = "body")
     val value: String
 ) {
     init {
-        validate(value.isNotBlank()) { REQUIRED }
-    }
-
-    companion object {
-        const val MAX_LENGTH = 100
+        validate(this.value.isNotBlank()) { REQUIRED }
     }
 }

@@ -1,4 +1,4 @@
-package com.woogie.realworld.domain.article
+package com.woogie.realworld.domain.article.domain
 
 import javax.persistence.Column
 import javax.persistence.Embeddable

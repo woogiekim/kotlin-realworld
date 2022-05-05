@@ -1,4 +1,4 @@
-package com.woogie.realworld.domain.article
+package com.woogie.realworld.domain.article.domain
 
 import com.woogie.realworld.exception.ErrorCode
 import com.woogie.realworld.support.assertThatRealWorldException

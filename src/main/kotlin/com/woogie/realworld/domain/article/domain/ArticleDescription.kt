@@ -1,4 +1,4 @@
-package com.woogie.realworld.domain.article
+package com.woogie.realworld.domain.article.domain
 
 import com.woogie.realworld.exception.ErrorCode.REQUIRED
 import com.woogie.realworld.exception.validate
@@ -7,12 +7,12 @@ import javax.persistence.Embeddable
 import javax.persistence.Lob
 
 @Embeddable
-data class ArticleBody(
+data class ArticleDescription(
     @Lob
-    @Column(name = "body")
+    @Column(name = "description")
     val value: String
 ) {
     init {
-        validate(value.isNotBlank()) { REQUIRED }
+        validate(this.value.isNotBlank()) { REQUIRED }
     }
 }
