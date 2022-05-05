@@ -13,6 +13,6 @@ data class ArticleBody(
     val value: String
 ) {
     init {
-        validate(value.isNotBlank()) { REQUIRED }
+        validate(this.value.isNotBlank()) { REQUIRED }
     }
 }

@@ -1,7 +1,6 @@
 package com.woogie.realworld.domain.article.domain
 
-import com.woogie.realworld.domain.article.domain.Article
-import com.woogie.realworld.domain.tag.Tag
+import com.woogie.realworld.domain.tag.domain.Tag
 import com.woogie.realworld.fixture.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test

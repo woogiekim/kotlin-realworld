@@ -1,6 +1,5 @@
 package com.woogie.realworld.domain.article.domain
 
-import com.woogie.realworld.domain.article.domain.ArticleRepository
 import com.woogie.realworld.fixture.createArticle
 import com.woogie.realworld.support.BaseRepositoryTest
 import com.woogie.realworld.support.findByIdOrThrow
