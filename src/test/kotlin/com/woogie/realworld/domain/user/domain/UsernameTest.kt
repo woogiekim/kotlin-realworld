@@ -1,7 +1,8 @@
 package com.woogie.realworld.domain.user.domain
 
-import com.woogie.realworld.exception.RealWorldException
-import org.assertj.core.api.Assertions
+import com.woogie.realworld.exception.ErrorCode
+import com.woogie.realworld.exception.ErrorCode.REQUIRED
+import com.woogie.realworld.support.assertThatRealWorldException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -15,15 +16,17 @@ internal class UsernameTest {
 
     @Test
     fun `공백이 있으면 생성 실패`() {
-        Assertions.assertThatExceptionOfType(RealWorldException::class.java)
-            .isThrownBy { Username(" ") }
+        assertThatRealWorldException(REQUIRED) {
+            Username(" ")
+        }
     }
 
     @Test
     fun `최대길이 보다 크면 생성 실패`() {
         val name = (0 until Username.MAXIMUM_LENGTH + 1).joinToString("")
 
-        Assertions.assertThatExceptionOfType(RealWorldException::class.java)
-            .isThrownBy { Username(name) }
+        assertThatRealWorldException(ErrorCode.INVALID_USERNAME_MAXIMUM_LENGTH) {
+            Username(name)
+        }
     }
 }
